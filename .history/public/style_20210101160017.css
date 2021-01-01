@@ -1,6 +1,6 @@
 td {
-  width: 175px;
-  height: 175px;
+  width: 75%;
+  height: 75%;
   background: #f2bc94;
   color: white;
   line-height: 100px;
@@ -8,6 +8,5 @@ td {
   font-size: 3rem;
 }
 table {
-  margin-top: 3%;
-  margin-left: 30%;
+    width: ;
 }

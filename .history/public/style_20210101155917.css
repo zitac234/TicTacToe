@@ -1,13 +1,12 @@
 td {
-  width: 175px;
-  height: 175px;
-  background: #f2bc94;
+  width: 100px;
+  height: 100px;
+  
   color: white;
   line-height: 100px;
   text-align: center;
   font-size: 3rem;
 }
 table {
-  margin-top: 3%;
-  margin-left: 30%;
+  background-color: #f2bc94;
 }

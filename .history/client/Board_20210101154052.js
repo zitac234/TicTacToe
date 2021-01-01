@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 const table = document.createElement("table");
+table.setAttribute("id", "mytable");
 export default class Board extends React.Component {
   myTable() {
     for (let row = 0; row < 3; row++) {
