@@ -20,9 +20,11 @@ export default class Board extends React.Component {
     const cells = table.getElementsByTagName("td");
     for (let i = 0; i < cells.length; i++) {
       let cell = cells[i];
-      if (!cell.innerHTML) {
+      if (cell.innerHTML === "") {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
+          console.log("step 1 is working");
+          console.log("cellId:", cellId);
           document.getElementById(cellId).innerHTML = "Nneoma";
           event.stopPropagation();
         });

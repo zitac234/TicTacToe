@@ -4,30 +4,30 @@ export default class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      openCells: 9,
+      filledCells: [],
+      emptyCells: [0, 1, 2, 3, 4, 5, 6, 7, 8],
     };
   }
   componentDidMount() {
     this.placeMark();
   }
-  cellFilled() {
+  cellFilled(num) {
     this.setState({
-      openCells: this.state.openCells - 1,
+      filledCells: [...this.state.filledCells, num],
     });
   }
   placeMark() {
     const table = document.querySelector("table");
-    const cells = table.getElementsByTagName("td");
-    for (let i = 0; i < cells.length; i++) {
-      let cell = cells[i];
-      if (!cell.innerHTML) {
-        cell.addEventListener("click", (event) => {
-          const cellId = event.target.id;
-          document.getElementById(cellId).innerHTML = "Nneoma";
-          event.stopPropagation();
-        });
+    table.addEventListener("click", (event) => {
+      if (this.state.filledCells.length < 9) {
+        const cellId = event.target.id;
+        document.getElementById(cellId).innerHTML = "Nneoma";
+        console.log("this is index", cellId);
+        this.cellFilled(cellId);
+        console.log("this is filledcells", this.state.filledCells);
+        console.log("this is availbleSpace", this.state.emptyCells);
       }
-    }
+    });
   }
   myTable() {
     let counter = 1;

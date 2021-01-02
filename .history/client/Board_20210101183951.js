@@ -9,25 +9,24 @@ export default class Board extends React.Component {
   }
   componentDidMount() {
     this.placeMark();
+    console.log("first run");
   }
-  cellFilled() {
+  cellFilled(num) {
     this.setState({
-      openCells: this.state.openCells - 1,
+      openCells: this.state
     });
   }
   placeMark() {
     const table = document.querySelector("table");
-    const cells = table.getElementsByTagName("td");
-    for (let i = 0; i < cells.length; i++) {
-      let cell = cells[i];
-      if (!cell.innerHTML) {
-        cell.addEventListener("click", (event) => {
-          const cellId = event.target.id;
-          document.getElementById(cellId).innerHTML = "Nneoma";
-          event.stopPropagation();
-        });
+    table.addEventListener("click", (event) => {
+      const cellId = event.target.id;
+      if (this.state.openCells.length > 0) {
+        document.getElementById(cellId).innerHTML = "Nneoma";
+        console.log("this is filledcells", this.state.openCells);
+        this.cellFilled(cellId);
+        console.log("this is after filledcells", this.state.openCells);
       }
-    }
+    });
   }
   myTable() {
     let counter = 1;

@@ -8,6 +8,8 @@ export default class Board extends React.Component {
     };
   }
   componentDidMount() {
+    // const cells = table.getElementsByTagName("td");
+    // console.log("this is cells", cells);
     this.placeMark();
   }
   cellFilled() {
@@ -17,17 +19,18 @@ export default class Board extends React.Component {
   }
   placeMark() {
     const table = document.querySelector("table");
-    const cells = table.getElementsByTagName("td");
-    for (let i = 0; i < cells.length; i++) {
-      let cell = cells[i];
-      if (!cell.innerHTML) {
-        cell.addEventListener("click", (event) => {
-          const cellId = event.target.id;
-          document.getElementById(cellId).innerHTML = "Nneoma";
-          event.stopPropagation();
-        });
-      }
-    }
+    // const cells = table.getElementsByTagName("td");
+    // for (let i = 0; i < cells.length; i++) {
+    //   let cell = cells[i];
+    //   if (!cell.hasChildNodes()) {
+    //     cell.addEventListener("click", (event) => {
+    //       const cellId = event.target.id;
+    //       console.log("step 1 is working");
+    //       console.log("cellId:", cellId);
+    //       event.stopPropagation();
+    //     });
+    //   }
+    // }
   }
   myTable() {
     let counter = 1;

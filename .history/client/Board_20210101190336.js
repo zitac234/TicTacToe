@@ -8,6 +8,8 @@ export default class Board extends React.Component {
     };
   }
   componentDidMount() {
+    const cells = table.getElementsByTagName("td");
+    console.log("this is cells", cells);
     this.placeMark();
   }
   cellFilled() {
@@ -16,18 +18,29 @@ export default class Board extends React.Component {
     });
   }
   placeMark() {
-    const table = document.querySelector("table");
     const cells = table.getElementsByTagName("td");
     for (let i = 0; i < cells.length; i++) {
       let cell = cells[i];
-      if (!cell.innerHTML) {
+      console.log("this is cell:", cell);
+      if (!cell.hasChildNodes()) {
         cell.addEventListener("click", (event) => {
-          const cellId = event.target.id;
-          document.getElementById(cellId).innerHTML = "Nneoma";
-          event.stopPropagation();
-        });
+            const tag = table.rows[index[0]].cells[index[1]].getElementsByTagName(
+              "div"
+            )[0];
+            this.diagonalcell(index, tag);
+            event.stopPropagation();
+          });
       }
     }
+    //table.addEventListener("click", (event) => {
+    // const cellId = event.target.id;
+    // if (this.state.openCells > 0) {
+    //   document.getElementById(cellId).innerHTML = "Nneoma";
+    //   console.log("this is filledcells", this.state.openCells);
+    //   this.cellFilled();
+    //   console.log("this is after filledcells", this.state.openCells);
+    // }
+    //});
   }
   myTable() {
     let counter = 1;

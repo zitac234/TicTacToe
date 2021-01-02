@@ -23,6 +23,8 @@ export default class Board extends React.Component {
       if (!cell.innerHTML) {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
+          console.log("step 1 is working");
+          console.log("cellId:", cellId);
           document.getElementById(cellId).innerHTML = "Nneoma";
           event.stopPropagation();
         });
