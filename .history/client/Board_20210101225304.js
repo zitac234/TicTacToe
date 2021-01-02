@@ -31,7 +31,7 @@ export default class Board extends React.Component {
           return false;
         }
       }
-      return true;
+      
     }
   }
   cellFilled() {
@@ -49,8 +49,7 @@ export default class Board extends React.Component {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
           this.colWin(mark);
-          if (this.rowWin(mark)) console.log("you won in row");
-          if (this.colWin(mark)) console.log("you won in col");
+          if (this.rowWin(mark)) console.log("you won");
           event.stopPropagation();
         });
       }
