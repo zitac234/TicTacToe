@@ -44,11 +44,9 @@ export default class Board extends React.Component {
     }
     return true;
   }
-  win(mark) {
-    if (this.diagWin(mark) || this.colWin(mark) || this.rowWin(mark)) {
-      return true;
-    }
-  }
+  win(mark){
+      if(this.diagWin(mark)this.colWin(mark), this.rowWin(mark))
+}
 
   cellFilled() {
     this.setState({
@@ -65,7 +63,10 @@ export default class Board extends React.Component {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
-          if (this.win(mark)) console.log("You Won!!!!!!!!");
+          this.colWin(mark);
+          if (this.rowWin(mark)) console.log("you won in row");
+          if (this.colWin(mark)) console.log("you won in col");
+          if (this.diagWin(mark)) console.log("you win diagonal");
           event.stopPropagation();
         });
       }

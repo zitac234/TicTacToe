@@ -65,7 +65,7 @@ export default class Board extends React.Component {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
-          if (this.win(mark)) console.log("You Won!!!!!!!!");
+          if(this.win(mark))console.log('You Won!!!!!')
           event.stopPropagation();
         });
       }
