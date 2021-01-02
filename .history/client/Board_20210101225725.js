@@ -11,9 +11,12 @@ export default class Board extends React.Component {
     this.placeMark();
   }
   rowWin(mark) {
-    for (let i = 0; i < 3; i++) {
-      for (let n = 0; n < 3; n++) {
-        const cell = table.rows[i].cells[n];
+    const rows = table.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+        
+      const row = rows[i].getElementsByTagName("td");
+      for (let n = 0; n < row.length; n++) {
+        const cell = row[n];
         if (cell.innerHTML !== mark) {
           return false;
         }
@@ -32,19 +35,6 @@ export default class Board extends React.Component {
       return true;
     }
   }
-  diagWin(mark) {
-    let n = 2;
-    for (let i = 0; i < 3; i++) {
-      const positiveCell = table.rows[i].cells[i];
-      const negativeCell = table.rows[i].cells[n];
-      if (positiveCell.innerHTML !== mark && negativeCell.innerHTML !== mark) {
-        return false;
-      }
-      n--;
-    }
-    return true;
-  }
-
   cellFilled() {
     this.setState({
       openCells: this.state.openCells - 1,
@@ -62,7 +52,6 @@ export default class Board extends React.Component {
           this.colWin(mark);
           if (this.rowWin(mark)) console.log("you won in row");
           if (this.colWin(mark)) console.log("you won in col");
-          if (this.diagWin(mark)) console.log("you win diagonal");
           event.stopPropagation();
         });
       }

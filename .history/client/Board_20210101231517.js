@@ -40,7 +40,6 @@ export default class Board extends React.Component {
       if (positiveCell.innerHTML !== mark && negativeCell.innerHTML !== mark) {
         return false;
       }
-      n--;
     }
     return true;
   }
@@ -62,7 +61,7 @@ export default class Board extends React.Component {
           this.colWin(mark);
           if (this.rowWin(mark)) console.log("you won in row");
           if (this.colWin(mark)) console.log("you won in col");
-          if (this.diagWin(mark)) console.log("you win diagonal");
+          if(di)
           event.stopPropagation();
         });
       }

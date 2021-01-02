@@ -32,17 +32,8 @@ export default class Board extends React.Component {
       return true;
     }
   }
-  diagWin(mark) {
-    let n = 2;
-    for (let i = 0; i < 3; i++) {
-      const positiveCell = table.rows[i].cells[i];
-      const negativeCell = table.rows[i].cells[n];
-      if (positiveCell.innerHTML !== mark && negativeCell.innerHTML !== mark) {
-        return false;
-      }
-      n--;
-    }
-    return true;
+  diagWin(){
+    coun
   }
 
   cellFilled() {
@@ -62,7 +53,6 @@ export default class Board extends React.Component {
           this.colWin(mark);
           if (this.rowWin(mark)) console.log("you won in row");
           if (this.colWin(mark)) console.log("you won in col");
-          if (this.diagWin(mark)) console.log("you win diagonal");
           event.stopPropagation();
         });
       }

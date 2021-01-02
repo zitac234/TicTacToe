@@ -40,7 +40,6 @@ export default class Board extends React.Component {
       if (positiveCell.innerHTML !== mark && negativeCell.innerHTML !== mark) {
         return false;
       }
-      n--;
     }
     return true;
   }
