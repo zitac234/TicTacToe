@@ -14,17 +14,9 @@ export default class Board extends React.Component {
     const rows = table.getElementsByTagName("tr");
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i].getElementsByTagName("td");
-      for (let n = 0; n < row.length; n++) {
-        const cell = row[n];
-        if (cell.innerHTML !== mark) {
-          return false;
-        }
-      }
-      return true;
+     if(mark !== row)
     }
-  }
-  colWin(mark){
-      
+    // console.log(false);
   }
   cellFilled() {
     this.setState({
@@ -40,7 +32,8 @@ export default class Board extends React.Component {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
-          if (this.rowWin(mark)) console.log("you won");
+          this.rowWin(mark);
+          //   if (this.rowWin(mark)) console.log("you won");
           event.stopPropagation();
         });
       }

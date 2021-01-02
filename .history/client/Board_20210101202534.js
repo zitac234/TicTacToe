@@ -12,19 +12,19 @@ export default class Board extends React.Component {
   }
   rowWin(mark) {
     const rows = table.getElementsByTagName("tr");
+
     for (let i = 0; i < rows.length; i++) {
-      const row = rows[i].getElementsByTagName("td");
+      const row = rows[i];
+         const cells = row.getElementsByTagName("td");
       for (let n = 0; n < row.length; n++) {
-        const cell = row[n];
-        if (cell.innerHTML !== mark) {
-          return false;
-        }
+        const cell = row[0];
+        console.log("this is cell", cell);
+        console.log("this is innerhtml", cell.innerHTML);
+        if (cell.innerHTML !== mark) return false;
       }
-      return true;
+      console.log("this is mark", mark);
     }
-  }
-  colWin(mark){
-      
+    return true;
   }
   cellFilled() {
     this.setState({
@@ -40,20 +40,22 @@ export default class Board extends React.Component {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
-          if (this.rowWin(mark)) console.log("you won");
+          this.rowWin(mark);
+          //   if (this.rowWin(mark)) console.log("you won");
           event.stopPropagation();
         });
       }
     }
   }
   myTable() {
+    let counter = 1;
     for (let row = 0; row < 3; row++) {
       let tr = document.createElement("tr");
-      tr.setAttribute("id", row);
       for (let col = 0; col < 3; col++) {
         let td = document.createElement("td");
-        td.setAttribute("id", `${row}, ${col}`);
+        td.setAttribute("id", counter);
         tr.appendChild(td);
+        counter++;
       }
       table.appendChild(tr);
     }

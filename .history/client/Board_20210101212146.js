@@ -23,9 +23,6 @@ export default class Board extends React.Component {
       return true;
     }
   }
-  colWin(mark){
-      
-  }
   cellFilled() {
     this.setState({
       openCells: this.state.openCells - 1,
@@ -40,7 +37,8 @@ export default class Board extends React.Component {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;
           document.getElementById(cellId).innerHTML = mark; //change this mark later
-          if (this.rowWin(mark)) console.log("you won");
+        //   this.rowWin(mark);
+          //   if (this.rowWin(mark)) console.log("you won");
           event.stopPropagation();
         });
       }

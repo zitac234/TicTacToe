@@ -23,9 +23,7 @@ export default class Board extends React.Component {
       return true;
     }
   }
-  colWin(mark){
-      
-  }
+  colW
   cellFilled() {
     this.setState({
       openCells: this.state.openCells - 1,
