@@ -1,0 +1,87 @@
+import React, { Component } from "react";
+import Computer from "./Computer";
+const table = document.createElement("table");
+let counter = 0;
+export default class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      grid: table,
+      PlayerMark: "O",
+      ComputerMark: "X",
+    };
+  }
+  componentDidMount() {
+    console.log("this is props", this.props);
+    this.placeMark();
+  }
+  emptyCell([r, c]) {
+    let index = [r, c];
+    let cell;
+    if (index) {
+      cell = table.rows[r].cells[c];
+      return cell.innerHTML === "" ? true : false;
+    } else {
+      for (let i = 0; i < 3; i++) {
+        for (let n = 0; n < 3; n++) {
+          cell = table.rows[i].cells[n];
+          if (cell.innerHTML === "") {
+            return true;
+          }
+        }
+        return false;
+      }
+    }
+  }
+
+  switchTurn(mark) {
+    mark =
+      mark === this.state.PlayerMark
+        ? this.state.ComputerMark
+        : this.state.PlayerMark;
+  }
+  placeMark() {
+    let mark = this.state.PlayerMark;
+    const cells = table.getElementsByTagName("td");
+    for (let i = 0; i < cells.length; i++) {
+      let cell = cells[i];
+      if (!cell.innerHTML) {
+        cell.addEventListener("click", (event) => {
+          const cellId = event.target.id;
+          document.getElementById(cellId).innerHTML = mark;
+          this.switchTurn(mark);
+          if (this.win(mark)) console.log("You Won!!!!!!!!");
+          event.stopPropagation();
+        });
+      }
+    }
+  }
+  myTable() {
+    for (let row = 0; row < 3; row++) {
+      let tr = document.createElement("tr");
+      tr.setAttribute("id", row);
+      for (let col = 0; col < 3; col++) {
+        let td = document.createElement("td");
+        td.setAttribute("id", `${counter}`);
+        counter++;
+        tr.appendChild(td);
+      }
+      table.appendChild(tr);
+    }
+    document.body.appendChild(table);
+  }
+  render() {
+    return (
+      <div>
+        {this.myTable()}
+        {/* <Computer
+          win={this.win}
+          grid={this.state.grid}
+          emptyCell={this.emptyCell}
+          PlayerMark={this.state.PlayerMark}
+          ComputerMark={this.state.ComputerMark}
+        /> */}
+      </div>
+    );
+  }
+}
