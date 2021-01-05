@@ -2,7 +2,7 @@ td {
   width: 175px;
   height: 175px;
   background: #00154f;
-  color: #f2bc94;
+  color: #f4af1b;
   line-height: 100px;
   text-align: center;
   font-size: 3rem;
@@ -12,7 +12,7 @@ table {
   margin-left: 30%;
 }
 body {
-  background-color: #f4af1b;
+  background-color:color: #f4af1b;;
   opacity: 1;
 }
 #myform {

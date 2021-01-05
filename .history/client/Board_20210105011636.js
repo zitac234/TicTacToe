@@ -9,7 +9,8 @@ export default class Board extends React.Component {
     };
   }
   componentDidMount() {
-    this.placeMark();
+    console.log("this is props", this.props);
+    this.placeMark(this.props.mark);
   }
 
   rowWin(mark) {
@@ -57,12 +58,12 @@ export default class Board extends React.Component {
       openCells: this.state.openCells - 1,
     });
   }
-  placeMark() {
+  placeMark(mark) {
     //remeber to add mark as parameter
     const cells = table.getElementsByTagName("td");
     for (let i = 0; i < cells.length; i++) {
       let cell = cells[i];
-      const mark = "Nneoma";
+      const mark = 'Nnme';
       if (!cell.innerHTML) {
         cell.addEventListener("click", (event) => {
           const cellId = event.target.id;

@@ -57,7 +57,7 @@ export default class Board extends React.Component {
       openCells: this.state.openCells - 1,
     });
   }
-  placeMark() {
+  placeMark(mark) {
     //remeber to add mark as parameter
     const cells = table.getElementsByTagName("td");
     for (let i = 0; i < cells.length; i++) {

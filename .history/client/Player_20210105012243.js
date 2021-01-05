@@ -16,7 +16,13 @@ class Player {
     });
   }
   render() {
-    // const myForm = <Form {...this.state} handleChange={this.handleChange} />;
+    const myForm = (
+      <Form
+        {...this.state}
+        handleChange={this.handleChange}
+        // handleSubmit={this.handleSubmit}
+      />
+    );
     return (
       <div>
         <Board />
