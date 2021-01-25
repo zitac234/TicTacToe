@@ -1,0 +1,32 @@
+td {
+  width: 175px;
+  height: 175px;
+  background: #00154f;
+  color: #f2bc94;
+  line-height: 100px;
+  text-align: center;
+  font-size: 3rem;
+}
+table {
+  margin-top: 3%;
+  margin-left: 30%;
+}
+body {
+  background-color: #f4af1b;
+  opacity: 1;
+}
+form {
+  text-align: center;
+}
+ValidatorForm{
+  height: 40%;
+}
+#myform {
+  border-style: outset;
+  border: black solid 3px;
+  width: 500px;
+  height: 450px;
+  margin-left: 30%;
+  margin-top: 10%;
+  border-radius: 10%;
+}
