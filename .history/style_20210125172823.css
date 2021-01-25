@@ -1,0 +1,230 @@
+body {
+  font-family: cursive;
+  background-color: #f4af1b;
+  color: #00154f;
+}
+
+.top-container {
+  height: 7vh;
+  width: 60%;
+  margin: 7vh auto;
+  margin-bottom: 5vh;
+  text-align: center;
+  font-size: 30px;
+  /* background-color: red; */
+}
+
+.intro {
+  margin: 0 auto;
+  text-align: center;
+  /* font-size: 20px; */
+  border: #00154f solid 3px;
+  width: 450px;
+  height: 400px;
+  border-radius: 5%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding-top: 3%;
+  /* margin: 8px 0; */
+  box-sizing: border-box;
+  border: none;
+  background-color: #f4af1b;
+  border-bottom: 1px solid #00154f;
+  text-align: center;
+  font-family: cursive;
+}
+.players {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.btn {
+  padding-bottom: 10%;
+  padding-top: 10%;
+  /* font-size: inherit; */
+  text-align: center;
+  /* font-weight: bold; */
+  letter-spacing: 3px;
+  /* text-transform: uppercase; */
+  text-decoration: none;
+  /*Button Color & Border*/
+  /* border: 4px solid #3c14d0; */
+  /* color: #3c14d0; */
+  /* background: #fff; */
+  outline: none;
+  /*Position, Display, Size*/
+  position: relative;
+  display: inline-block;
+  padding: 15px 10px 14px;
+  cursor: pointer;
+  /* width: auto; */
+}
+
+#play-btn {
+  padding: 0;
+}
+
+#ai-btn {
+  margin-top: 3vh;
+}
+
+input[type="submit"] {
+  border: none;
+  padding: 15px 10px 14px;
+  font-size: inherit;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #fff;
+  color: #3c14d0;
+}
+
+.btn:after {
+  /*Make a:after be as big as button*/
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*Give a:after Border & Background color*/
+  border: 2px solid #3c14d0;
+  background-color: #3c14d0;
+  /*Decide Location of a:after..this gives a           bottom right shadow*/
+  left: 4px;
+  top: 4px;
+  /*Place a:after behind button*/
+  z-index: -1;
+  content: "";
+  /* Animation/Transition Speed
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s; */
+}
+
+.btn:hover {
+  top: 2px;
+  left: 2px;
+}
+
+.btn:hover:after {
+  top: -2px;
+  left: -2px;
+}
+
+.game-over-container {
+  width: 80%;
+  height: 10vh;
+  /* background-color: brown; */
+  margin: 0 auto;
+  margin-bottom: 5vh;
+  text-align: center;
+  display: none;
+}
+
+#game-caption {
+  font-size: 25px;
+  display: block;
+}
+
+.main-container {
+  width: 70%;
+  height: 50vh;
+  display: none;
+  justify-content: center;
+  margin: 0 auto;
+  /* background-color: blue; */
+}
+
+.player-column {
+  padding: 0 7vh;
+  display: flex;
+  /* background-color: brown; */
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  text-align: center;
+}
+
+.player-name {
+  height: 5vh;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.grid {
+  margin: 0 auto;
+  width: 40%;
+  height: 50vh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 10vh;
+}
+
+/* How to factor border prop code below? */
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.box:hover {
+  background-color: rgb(250, 224, 184);
+}
+
+#box-1 {
+  grid-area: 1/1/2/2;
+  border-right: 3px black solid;
+  border-bottom: 3px black solid;
+}
+
+#box-2 {
+  grid-area: 1/2/2/3;
+  border-right: 3px black solid;
+  border-bottom: 3px black solid;
+}
+
+#box-3 {
+  grid-area: 1/3/2/4;
+  border-bottom: 3px black solid;
+}
+
+#box-4 {
+  grid-area: 2/1/3/2;
+  border-right: 3px black solid;
+  border-bottom: 3px black solid;
+}
+
+#box-5 {
+  grid-area: 2/2/3/3;
+  border-right: 3px black solid;
+  border-bottom: 3px black solid;
+}
+
+#box-6 {
+  grid-area: 2/3/3/4;
+  border-bottom: 3px black solid;
+}
+
+#box-7 {
+  grid-area: 3/1/4/2;
+  border-right: 3px black solid;
+}
+
+#box-8 {
+  grid-area: 3/2/4/3;
+  border-right: 3px black solid;
+}
+
+#box-9 {
+  grid-area: 3/3/4/4;
+}

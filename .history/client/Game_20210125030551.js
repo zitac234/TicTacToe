@@ -1,4 +1,0 @@
-class Game {
-  constructor(props) {
-  }
-}
