@@ -15,13 +15,13 @@ body {
 }
 
 .intro {
-  margin-left: 40%;
+  margin-left: 35%;
   margin-top: 5%;
   text-align: center;
   border: #00154f solid 3px;
-  width: 250px;
+  width: 350px;
   height: 125px;
-  border-radius: 10%;
+  border-radius: 5%;
 }
 
 input:focus,
