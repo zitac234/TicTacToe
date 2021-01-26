@@ -196,6 +196,7 @@ const TicTacToe = () => {
   const _addMove = (target) => {
     let move = null;
     const targetedBox = parseInt(target.dataset.index);
+
     if (!_playAgainstCom) {
       if (gameBoard.boardArray[targetedBox] === 0 && !_gameOver) {
         if (_isPlayer1Turn) {
@@ -226,12 +227,16 @@ const TicTacToe = () => {
       _checkDraw();
     }
   };
+
+  // Add event listeners to box elements
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("click", (event) => {
       _addMove(event.target);
     });
   });
+
+  // toggles between start interface and game interface
   const _toggleScreen = (form, grid, gameOverContainer) => {
     _gameStarted = !_gameStarted;
     if (_gameStarted) {

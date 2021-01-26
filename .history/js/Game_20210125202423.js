@@ -232,6 +232,8 @@ const TicTacToe = () => {
       _addMove(event.target);
     });
   });
+
+  // toggles between start interface and game interface
   const _toggleScreen = (form, grid, gameOverContainer) => {
     _gameStarted = !_gameStarted;
     if (_gameStarted) {

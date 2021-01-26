@@ -245,7 +245,6 @@ const TicTacToe = () => {
     }
   };
 
-  // Randomise which player starts first
   const _randomiseStart = (gameCaption) => {
     const num = Math.random();
 
@@ -257,7 +256,6 @@ const TicTacToe = () => {
     }
   };
 
-  // switches Player 2 to AI
   const _playAgainstAi = (() => {
     const aiBtn = document.querySelector("#ai-btn");
     const gameCaption = document.querySelector("#game-caption");

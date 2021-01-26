@@ -226,12 +226,16 @@ const TicTacToe = () => {
       _checkDraw();
     }
   };
+
+  // Add event listeners to box elements
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("click", (event) => {
       _addMove(event.target);
     });
   });
+
+  // toggles between start interface and game interface
   const _toggleScreen = (form, grid, gameOverContainer) => {
     _gameStarted = !_gameStarted;
     if (_gameStarted) {

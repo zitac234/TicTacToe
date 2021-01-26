@@ -98,6 +98,8 @@ const TicTacToe = () => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+  // Displays players' turn after randomised start
   const _displayName = () => {
     const gameCaption = document.querySelector("#game-caption");
     if (!_playAgainstCom) {
@@ -110,6 +112,7 @@ const TicTacToe = () => {
   };
 
   const _checkWin = () => {
+    // iterates through winning combinations and stores gameboard's value in targeted squares in boxValues
     for (let i = 0; i < _winningCombinations.length; i++) {
       let boxValues = [];
       for (let j = 0; j < _winningCombinations[i].length; j++) {
@@ -147,6 +150,10 @@ const TicTacToe = () => {
 
   const _miniMax = (board, player) => {
     let remainingSquares = player.getAvailableSquares(board);
+
+    // console.log(remainingSquares)
+    // console.log(board)
+
     if (_checkWin() === "Human") {
       return { score: -10 };
     } else if (_checkWin() === "AI") {
@@ -160,6 +167,7 @@ const TicTacToe = () => {
     for (let i = 0; i < remainingSquares.length; i++) {
       let move = {};
       move.index = remainingSquares[i];
+      // console.log(remainingSquares[i])
       board[remainingSquares[i]] = player.getSign();
 
       if (player.getName() == "AI") {
@@ -193,9 +201,12 @@ const TicTacToe = () => {
     }
     return moves[bestMove];
   };
+
+  // Adds player's sign in selected square and updates boardArray
   const _addMove = (target) => {
     let move = null;
     const targetedBox = parseInt(target.dataset.index);
+
     if (!_playAgainstCom) {
       if (gameBoard.boardArray[targetedBox] === 0 && !_gameOver) {
         if (_isPlayer1Turn) {
@@ -226,12 +237,16 @@ const TicTacToe = () => {
       _checkDraw();
     }
   };
+
+  // Add event listeners to box elements
   const boxes = document.querySelectorAll(".box");
   boxes.forEach((box) => {
     box.addEventListener("click", (event) => {
       _addMove(event.target);
     });
   });
+
+  // toggles between start interface and game interface
   const _toggleScreen = (form, grid, gameOverContainer) => {
     _gameStarted = !_gameStarted;
     if (_gameStarted) {

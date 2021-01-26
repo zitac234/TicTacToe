@@ -244,8 +244,6 @@ const TicTacToe = () => {
       gameOverContainer.style.display = "none";
     }
   };
-
-  // Randomise which player starts first
   const _randomiseStart = (gameCaption) => {
     const num = Math.random();
 
