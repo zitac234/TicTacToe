@@ -116,7 +116,7 @@ const TicTacToe = () => {
     // iterates through winning combinations and stores gameboard's value in targeted squares in boxValues
     for (let i = 0; i < _winningCombinations.length; i++) {
       let boxValues = [];
-      for (let j = 0; j < _winningCombinations[i].length; j++) {
+      for (let  j = 0; j < _winningCombinations[i].length; j++) {
         boxValues.push(gameBoard.boardArray[_winningCombinations[i][j]]);
       }
 
@@ -172,28 +172,30 @@ const TicTacToe = () => {
       board[remainingSquares[i]] = player.getSign();
 
       if (player.getName() == "AI") {
-        let result = _miniMax(board, player1);
+        l result = _miniMax(board, player1);
         move.score = result.score;
       } else {
-        let result = _miniMax(board, player2);
+        var result = _miniMax(board, player2);
         move.score = result.score;
       }
+
+      // board[remainingSquares[i]] = move.index
       board[remainingSquares[i]] = 0;
       moves.push(move);
     }
 
-    let bestMove;
+    var bestMove;
     if (player.getName() === "AI") {
-      let bestScore = -10000;
-      for (let i = 0; i < moves.length; i++) {
+      var bestScore = -10000;
+      for (var i = 0; i < moves.length; i++) {
         if (moves[i].score > bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
         }
       }
     } else {
-      let bestScore = 10000;
-      for (let i = 0; i < moves.length; i++) {
+      var bestScore = 10000;
+      for (var i = 0; i < moves.length; i++) {
         if (moves[i].score < bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
@@ -325,6 +327,9 @@ const TicTacToe = () => {
       } else {
         player2.setName(2, "Player 2");
       }
+
+      // player1.setName(1, document.querySelector("#player1-name").value)
+      // player2.setName(2, document.querySelector("#player2-name").value)
       e.preventDefault();
 
       const grid = document.querySelector(".main-container");

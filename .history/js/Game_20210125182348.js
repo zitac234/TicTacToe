@@ -1,25 +1,23 @@
 const Gameboard = () => {
-  const _noOfBoxes = 9;
+  const numBoxes = 9;
   let boardArray = [];
   const resetBoard = () => {
     boardArray = [];
-    for (let i = 0; i < _noOfBoxes; i++) {
+    for (let i = 0; i < numBoxes; i++) {
       boardArray.push(0);
     }
   };
   resetBoard();
-
   return {
     boardArray,
     resetBoard,
   };
 };
+
 const Ai = () => {
   const player = Player();
-
   const makeMove = (board, bestMove) => {
     let remainingSquares = player.getAvailableSquares(board);
-
     if (remainingSquares.length > 0) {
       const chosenSquare = bestMove.index;
       board[chosenSquare] = player.getSign();
@@ -35,31 +33,27 @@ const Ai = () => {
     makeMove,
   };
 };
+
 const Player = () => {
-  let _whichPlayer = 0;
-  let _name = "";
-
+  let currentPlayer = 0;
+  let name = "";
   const getSign = () => {
-    return _whichPlayer === 1 ? "X" : "O";
+    return currentPlayer === 1 ? "X" : "O";
   };
-
-  // set player's name and number
-  const setName = (whichPlayer, name) => {
-    _whichPlayer = whichPlayer;
-    _name = name;
+  const setName = (currentPlayer, name) => {
+    currentPlayer = currentPlayer;
+    name = name;
   };
-
   const getName = () => {
-    return _name;
+    return name.toUpperCase();
   };
 
   const getWhichPlayer = () => {
-    return _whichPlayer;
+    return currentPlayer;
   };
 
   const getAvailableSquares = (board) => {
     let remainingSquares = [];
-
     for (let i = 0; i < board.length; i++) {
       if (board[i] === 0) {
         remainingSquares.push(i);
@@ -77,19 +71,17 @@ const Player = () => {
   };
 };
 
-// Properties, event listers and methods for game logic
 const TicTacToe = () => {
   const gameBoard = Gameboard();
   const player1 = Player();
-  var player2 = Player();
+  let player2 = Player();
 
-  let _isPlayer1Turn = true;
-  let _gameOver = false;
-  let _gameStarted = false;
-  let _playAgainstCom = false;
+  let isPlayer1Turn = true;
+  let gameOver = false;
+  let gameStarted = false;
+  let playAgainstCom = false;
 
-  // Array storing all wining combinations
-  const _winningCombinations = [
+  const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -100,11 +92,10 @@ const TicTacToe = () => {
     [2, 4, 6],
   ];
 
-  // Displays players' turn after randomised start
   const _displayName = () => {
     const gameCaption = document.querySelector("#game-caption");
-    if (!_playAgainstCom) {
-      if (_isPlayer1Turn) {
+    if (!playAgainstCom) {
+      if (isPlayer1Turn) {
         gameCaption.textContent = `${player1.getName()}'s turn`;
       } else {
         gameCaption.textContent = `${player2.getName()}'s turn`;
@@ -113,11 +104,10 @@ const TicTacToe = () => {
   };
 
   const _checkWin = () => {
-    // iterates through winning combinations and stores gameboard's value in targeted squares in boxValues
-    for (let i = 0; i < _winningCombinations.length; i++) {
+    for (let i = 0; i < winningCombinations.length; i++) {
       let boxValues = [];
-      for (let j = 0; j < _winningCombinations[i].length; j++) {
-        boxValues.push(gameBoard.boardArray[_winningCombinations[i][j]]);
+      for (let j = 0; j < winningCombinations[i].length; j++) {
+        boxValues.push(gameBoard.boardArray[winningCombinations[i][j]]);
       }
 
       if (
@@ -131,24 +121,19 @@ const TicTacToe = () => {
         } else {
           winner = player2.getName();
         }
-
-        // gameCaption.textContent = `${winner} has won! Click the Restart button to play again.`
-        _gameOver = true;
+        gameOver = true;
         return winner;
       }
     }
   };
-
-  // If all squares of the grid are filled and no winner, then it's a draw
   const _checkDraw = () => {
     const gameCaption = document.querySelector("#game-caption");
     if (gameBoard.boardArray.every((x) => x != 0)) {
       gameCaption.textContent = `It's a draw! Click the Restart button to play again.`;
       gameCaption.style.display = "block";
-      _gameOver = true;
+      gameOver = true;
     }
   };
-
   const _miniMax = (board, player) => {
     let remainingSquares = player.getAvailableSquares(board);
 
@@ -165,35 +150,37 @@ const TicTacToe = () => {
 
     let moves = [];
 
-    for (let i = 0; i < remainingSquares.length; i++) {
-      let move = {};
+    for (var i = 0; i < remainingSquares.length; i++) {
+      var move = {};
       move.index = remainingSquares[i];
       // console.log(remainingSquares[i])
       board[remainingSquares[i]] = player.getSign();
 
       if (player.getName() == "AI") {
-        let result = _miniMax(board, player1);
+        var result = _miniMax(board, player1);
         move.score = result.score;
       } else {
-        let result = _miniMax(board, player2);
+        var result = _miniMax(board, player2);
         move.score = result.score;
       }
+
+      // board[remainingSquares[i]] = move.index
       board[remainingSquares[i]] = 0;
       moves.push(move);
     }
 
-    let bestMove;
+    var bestMove;
     if (player.getName() === "AI") {
-      let bestScore = -10000;
-      for (let i = 0; i < moves.length; i++) {
+      var bestScore = -10000;
+      for (var i = 0; i < moves.length; i++) {
         if (moves[i].score > bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
         }
       }
     } else {
-      let bestScore = 10000;
-      for (let i = 0; i < moves.length; i++) {
+      var bestScore = 10000;
+      for (var i = 0; i < moves.length; i++) {
         if (moves[i].score < bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
@@ -325,6 +312,9 @@ const TicTacToe = () => {
       } else {
         player2.setName(2, "Player 2");
       }
+
+      // player1.setName(1, document.querySelector("#player1-name").value)
+      // player2.setName(2, document.querySelector("#player2-name").value)
       e.preventDefault();
 
       const grid = document.querySelector(".main-container");

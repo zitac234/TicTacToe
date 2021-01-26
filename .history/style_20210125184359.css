@@ -96,13 +96,12 @@ input[type="submit"] {
 
 .game-over-container {
   width: 80%;
-  height: 7vh;
+  height: 10vh;
   /* background-color: brown; */
   margin: 0 auto;
   margin-bottom: 5vh;
   text-align: center;
   display: none;
-  padding-bottom: 5%;
 }
 
 #game-caption {

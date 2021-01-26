@@ -96,17 +96,16 @@ input[type="submit"] {
 
 .game-over-container {
   width: 80%;
-  height: 7vh;
+  height: 10vh;
   /* background-color: brown; */
   margin: 0 auto;
   margin-bottom: 5vh;
   text-align: center;
   display: none;
-  padding-bottom: 5%;
 }
 
 #game-caption {
-  font-size: 15px;
+  font-size: 25px;
   display: block;
 }
 
@@ -130,11 +129,12 @@ input[type="submit"] {
 
 .player-name {
   height: 5vh;
-  font-weight: 400;
-  font-size: 25px;
+  font-weight: 700;
+  font-size: 40px;
 }
 
 .grid {
+  margin-top:;
   margin: 0 auto;
   width: 40%;
   height: 50vh;
@@ -143,6 +143,7 @@ input[type="submit"] {
   grid-template-columns: repeat(3, 1fr);
   margin-left: 10vh;
 }
+
 
 .box {
   display: flex;

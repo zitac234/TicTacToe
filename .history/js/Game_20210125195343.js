@@ -193,7 +193,7 @@ const TicTacToe = () => {
       }
     } else {
       let bestScore = 10000;
-      for (let i = 0; i < moves.length; i++) {
+      for (var i = 0; i < moves.length; i++) {
         if (moves[i].score < bestScore) {
           bestScore = moves[i].score;
           bestMove = i;
@@ -325,6 +325,9 @@ const TicTacToe = () => {
       } else {
         player2.setName(2, "Player 2");
       }
+
+      // player1.setName(1, document.querySelector("#player1-name").value)
+      // player2.setName(2, document.querySelector("#player2-name").value)
       e.preventDefault();
 
       const grid = document.querySelector(".main-container");
