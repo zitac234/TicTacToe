@@ -16,7 +16,7 @@ body {
 
 .intro {
   margin-left: 40%;
-  margin-top: 13%;
+  margin-top: 5%;
   text-align: center;
   border: #00154f solid 3px;
   width: 250px;
@@ -35,8 +35,8 @@ input[type="text"] {
   padding-top: 3%;
   box-sizing: border-box;
   border: none;
-  background-color: seashell;
-  border-bottom: 1px solid black;
+  background-color: #f4af1b;
+  border-bottom: 1px solid #00154f;
   text-align: center;
   font-family: cursive;
 }
